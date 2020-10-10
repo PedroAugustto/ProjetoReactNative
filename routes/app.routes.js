@@ -20,21 +20,21 @@ const AppRoutes = () => {
         }
       }>
       <Tab.Screen
+      name="Projetos"
+      component={Projetos}
+      options={
+        {
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="folder"
+              color={color}
+              size={32} />
+          )
+        }
+      } />
+      <Tab.Screen
         name="Tarefas"
         component={Tarefas}
-        options={
-          {
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons
-                name="folder"
-                color={color}
-                size={32} />
-            )
-          }
-        } />
-      <Tab.Screen
-        name="Projetos"
-        component={Projetos}
         options={
           {
             tabBarIcon: ({ color }) => (

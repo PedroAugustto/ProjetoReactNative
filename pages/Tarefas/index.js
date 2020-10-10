@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import {
   Container,
+  Title,
   Task,
   TaskContainer,
   TaskActions,
@@ -105,6 +106,7 @@ const Tarefas = () => {
   return (
 
     <Container>
+      <Title>Todas as tarefas</Title>
       <FormEnviar>
         <Input
           placeholder="Digitar a tarefa ..."

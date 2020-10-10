@@ -7,6 +7,14 @@ export const Container = styled.View`
   padding:0 20px;
 `;
 
+export const Title = styled.Text`
+  text-align:center;
+  color:#000;
+  font-size:30px;
+  margin-top:10px;
+  margin-bottom:20px;
+`;
+
 
 export const TaskContainer = styled.View`
   flex-direction:row;
