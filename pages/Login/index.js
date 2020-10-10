@@ -27,7 +27,7 @@ const Login = () => {
     try {
       await signIn(email, password)
     } catch (err) {
-      // console.warn('erro ao realizar a requisição')
+      console.warn('erro ao realizar a requisição')
     } finally {
       setCarregando(false)
     }

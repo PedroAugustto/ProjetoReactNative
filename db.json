@@ -11,6 +11,12 @@
       "nome": "Cláudio Leal (backupme)",
       "email": "claudio@claudio.com",
       "password": "111111"
+    },
+    {
+      "id":3,
+      "nome":"Pedro Chaves",
+      "email":"chaves@teste.com",
+      "password":"123"
     }
   ],
   "projetos": [
