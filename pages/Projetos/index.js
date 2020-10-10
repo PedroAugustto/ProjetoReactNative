@@ -14,6 +14,12 @@ import {
   } from './styles'
 
 const Projetos = () => {
+
+
+
+
+
+
     return(
     <Container>
         <Title>Projetos</Title>
@@ -28,6 +34,7 @@ const Projetos = () => {
     <ProjectContainer>
         <Project>
             <ProjectText>Projeto Teste</ProjectText>
+  
         </Project>
 
     </ProjectContainer>

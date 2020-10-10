@@ -13,10 +13,10 @@
       "password": "111111"
     },
     {
-      "id":3,
-      "nome":"Pedro Chaves",
-      "email":"chaves@teste.com",
-      "password":"123"
+      "id": 3,
+      "nome": "Pedro Chaves",
+      "email": "chaves@teste.com",
+      "password": "123"
     }
   ],
   "projetos": [
@@ -27,28 +27,35 @@
   ],
   "tarefas": [
     {
-      "descricao": "Aprender react",
-      "projetoId": 1,
-      "usuarioId": 1,
+      "descricao": "Criar tela de registro",
       "id": 1,
+      "idProjeto": 1,
       "concluido": true
     },
     {
-      "descricao": "Aprender css",
-      "projetoId": 1,
-      "usuarioId": 1,
-      "id": 3,
+      "descricao": "Página poder criar projetos",
+      "id": 2,
       "concluido": true
     },
     {
-      "descricao": "Vjdj",
-      "id": 4,
-      "concluido": true
-    },
-    {
-      "descricao": "Isso é um teste ",
+      "descricao": "Página projetos levar para página das Tarefas do projeto (TarefasProjeto)",
       "concluido": false,
-      "id": 5
+      "id": 3
+    },
+    {
+      "descricao": "TarefasProjeto só mostrar as tarefas do projeto selecionado",
+      "concluido": false,
+      "id": 4
+    },
+    {
+      "descricao": "Ao criar tarefa deve ser definido a qual usuário ela pertence",
+      "id": 6,
+      "concluido": true
+    },
+    {
+      "descricao": "As tarefas só devem aparecer para o usuário da tarefa",
+      "id": 7,
+      "concluido": false
     }
   ]
 }

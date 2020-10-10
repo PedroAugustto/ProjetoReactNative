@@ -8,6 +8,7 @@ import { UsuarioContext } from '../contexts/user';
 const Routes = () => {
 
   const { user } = useContext(UsuarioContext);
+  
 
   return (
     <NavigationContainer>
