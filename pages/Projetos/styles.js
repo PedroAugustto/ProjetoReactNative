@@ -23,7 +23,7 @@ export const ProjectContainer = styled.View`
   flex:1;
 `;
 
-export const Tasks = styled.ScrollView`
+export const Projects = styled.ScrollView`
 
 `;
 
