@@ -46,7 +46,7 @@ export const FormEnviar = styled.View`
   border: 1px solid #000;
 `;
 
-export const Input = styled.TextInput`
+export const InputTarefas = styled.TextInput`
   border:1px solid #333;
   height:60px;
   border-radius:5px;

@@ -10,7 +10,7 @@ import {
   Task,
   TaskContainer,
   TaskActions,
-  Input,
+  InputTarefas,
   Button,
   TextButton,
   FormEnviar,
@@ -47,7 +47,7 @@ const TarefasProjeto = () => {
   const loadTasks = async () => {
 
     try {
-      const response = await api.get("tarefas");
+      const response = await api.get(`tarefas?idUsuario=${usuario.user.id}`);
       setTasks(response.data)
     } catch (err) {
       console.warn("Falha ao recuperar as tarefas.")
@@ -63,8 +63,8 @@ const TarefasProjeto = () => {
     }
     const params = {
       descricao: newTask,
-      idUsuario: newUser,
-      idProjeto: newProject,
+      idUsuario: selectedUser,
+      // idProjeto: newProject,
       concluido: false
     }
 
@@ -123,7 +123,7 @@ const TarefasProjeto = () => {
     <Container>
       <FormEnviar>
         <Title>Criar Tarefa</Title>
-        <Input
+        <InputTarefas
           placeholder="Digitar a tarefas..."
           onChangeText={(letras) => { setNewTask(letras) }}
           value={newTask}

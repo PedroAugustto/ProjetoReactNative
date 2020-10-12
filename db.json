@@ -45,28 +45,28 @@
       "concluido": false,
       "id": 3,
       "idProjeto": 1,
-      "idUsuario": 1
+      "idUsuario": 2
     },
     {
       "descricao": "TarefasProjeto só mostrar as tarefas do projeto selecionado",
       "concluido": false,
       "id": 4,
       "idProjeto": 1,
-      "idUsuario": 1
+      "idUsuario": 2
     },
     {
       "descricao": "Ao criar tarefa deve ser definido a qual usuário ela pertence",
       "id": 6,
       "concluido": true,
       "idProjeto": 1,
-      "idUsuario": 1
+      "idUsuario": 3
     },
     {
       "descricao": "As tarefas só devem aparecer para o usuário da tarefa",
       "id": 7,
       "concluido": false,
       "idProjeto": 1,
-      "idUsuario": 1
+      "idUsuario": 3
     }
   ]
 }

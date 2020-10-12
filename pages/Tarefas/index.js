@@ -29,6 +29,7 @@ const Tarefas = () => {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
 
+  //Todas as tarefas de todos os usuarios estão sendo exibidas
   const loadTasks = async () => {
 
     try {
