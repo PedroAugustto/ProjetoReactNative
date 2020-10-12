@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 
-import { Image, ActivityIndicator } from 'react-native';
+import { Image, ActivityIndicator, Text } from 'react-native';
 
 import logoImg from '../../assets/logo.png';
 
@@ -8,7 +8,11 @@ import {
   Container,
   Input,
   Button,
-  ButtonText
+  ButtonText,
+  Btn,
+  BtnText,
+  Slide,
+  ModalContainer,
 } from './styles'
 
 import { UsuarioContext } from '../../contexts/user';
@@ -20,6 +24,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [carregando, setCarregando] = useState(false);
+  const [open, setOpen] = useState(false);
 
   async function handleSubmit() {
     setCarregando(true)
@@ -51,16 +56,43 @@ const Login = () => {
         placeholder="Senha"
         onChangeText={text => setPassword(text)}
         secureTextEntry={true} />
-      <Button onPress={handleSubmit} disabled={!password || !email}>
 
+      <Button onPress={handleSubmit} disabled={!password || !email}>
         {carregando ?
           <ActivityIndicator color="#333" />
           :
           <ButtonText>Acessar</ButtonText>
         }
-
-
       </Button>
+
+      <Btn onPress={() => setOpen(true)}>
+        <BtnText>Não possui um login? Cadastre-se</BtnText>
+      </Btn>
+
+      <Slide visible={open}>
+        <ModalContainer>
+          <Btn onPress={() => setOpen(false)}>
+            <ButtonText>Esse é um slide</ButtonText>
+          </Btn>
+
+          <Input
+            /* value = {NewNome} */
+            placeholder = 'Digite seu nome'
+            /* onChangeText = {} */
+          />
+          <Input
+            /* value = {newEmail} */
+            placeholder = 'Digite seu email'
+          /*  onChangeText = {} */
+          />
+          <Input
+            /* value = {NewPassword} */
+            placeholder = 'Digite sua senha'
+            /* onChangeText = {} */
+          />
+        </ModalContainer>
+      </Slide>
+
     </Container>
 
   )
