@@ -1,5 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {View, Text} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import {
     Container,
@@ -12,7 +15,8 @@ import {
     TextButton,
     FormEnviar,
     Projects,
-    ProjectText
+    ProjectButton,
+    ProjectButtonText
   } from './styles'
 
 import api from '../../services/api';
@@ -20,6 +24,8 @@ import api from '../../services/api';
 import { UsuarioContext } from '../../contexts/user';
 
 const Projetos = () => {
+
+    const navigation = useNavigation();
 
     const usuario = useContext(UsuarioContext);
     console.warn(usuario)
@@ -37,6 +43,13 @@ const Projetos = () => {
           console.warn("Falha ao recuperar o Projeto.")
         }
     }
+
+    // this.prop.navigation.navigate("TarefasProjeto")
+    const handleDirecionarParaTarefasProjeto = () => {
+      navigation.reset({
+          routes:[{name: 'TarefasProjeto'}]
+      });
+  }
     
     const handleAddProjects = async () => {
 
@@ -45,8 +58,7 @@ const Projetos = () => {
         return
       }
       const params = {
-        descricao: newProject,
-        concluido: false
+        descricao: newProject
       }
 
       try{
@@ -58,20 +70,20 @@ const Projetos = () => {
       }
     }
     
-      const handleProjects = async (project) => {
+      // const handleProjects = async (project) => {
 
-        const params = {
-          ...project,
-          concluido: !project.concluido
-        }
+      //   const params = {
+      //     ...project,
+      //     concluido: !project.concluido
+      //   }
 
-        try{
-          await api.put(`projetos/${project.id}`, params);
-          loadProjects();
-        } catch (err) {
+      //   try{
+      //     await api.put(`projetos/${project.id}`, params);
+      //     loadProjects();
+      //   } catch (err) {
 
-        }
-      }
+      //   }
+      // }
 
       const handleRemoveProject = async ({ id }) => {
 
@@ -81,7 +93,6 @@ const Projetos = () => {
         } catch (err) {
           console.warn("erro ao deletar tarefa")
         }
-        //console.warn(`delete ${id}`)
       }
 
       useEffect(() => {
@@ -110,23 +121,21 @@ const Projetos = () => {
       {projects.map(project => (
       <ProjectContainer key={project.id} finalizado={project.concluido}>
         <Project>
-            <ProjectText>{project.descricao}</ProjectText>
+            <ProjectButton onPress={() => { handleDirecionarParaTarefasProjeto() }}>
+              <ProjectButtonText>
+                {project.descricao}
+              </ProjectButtonText>
+            </ProjectButton>
         </Project>
         <ProjectActions>
 
-        <MaterialCommunityIcons
+              <MaterialCommunityIcons
                 name="delete-outline"
                 color="#333"
                 size={32}
                 onPress={() => { handleRemoveProject(project) }}
               />
 
-              {/*<MaterialCommunityIcons
-               name={task.concluido ? "check-circle-outline" : "circle-outline"}
-                color={task.concluido ? "#04d361" : "#333"}
-                size={32}
-                onPress={() => { handleTasks(task) }}
-              />*/}
         </ProjectActions>
     </ProjectContainer>
     )
