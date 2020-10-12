@@ -3,6 +3,7 @@ import React, { useState, useContext } from 'react';
 import { Image, ActivityIndicator, Text } from 'react-native';
 
 import logoImg from '../../assets/logo.png';
+import UsuarioImg from '../../assets/usuario.png'
 
 import {
   Container,
@@ -13,6 +14,9 @@ import {
   BtnText,
   Slide,
   ModalContainer,
+  Titulo,
+  InputCadastro,
+  Img,
 } from './styles'
 
 import { UsuarioContext } from '../../contexts/user';
@@ -71,25 +75,31 @@ const Login = () => {
 
       <Slide visible={open}>
         <ModalContainer>
-          <Btn onPress={() => setOpen(false)}>
-            <ButtonText>Esse é um slide</ButtonText>
-          </Btn>
+          
+          {/* <Image source={UsuarioImg} width = {30} height = {30} /> */}
 
-          <Input
+          <Titulo>Informe os seguintes dados para criar um usuário:</Titulo>
+
+          <InputCadastro
             /* value = {NewNome} */
             placeholder = 'Digite seu nome'
             /* onChangeText = {} */
           />
-          <Input
+          <InputCadastro
             /* value = {newEmail} */
             placeholder = 'Digite seu email'
           /*  onChangeText = {} */
           />
-          <Input
+          <InputCadastro
             /* value = {NewPassword} */
             placeholder = 'Digite sua senha'
             /* onChangeText = {} */
           />
+
+          <Btn onPress={() => setOpen(false)}>
+            <ButtonText>Já possui um login?</ButtonText>
+          </Btn>
+
         </ModalContainer>
       </Slide>
 

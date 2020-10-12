@@ -50,7 +50,7 @@ export const BtnText = styled.Text`
 `;
 
 export const Slide= styled.Modal`
-  background-color:#fff;
+  background-color:#808080;
   flex:1;
   padding:0 20px;
 `;
@@ -58,6 +58,8 @@ export const Slide= styled.Modal`
 export const ModalContainer = styled.View`
   justify-content: center;
   align-items: center;
+  background-color:#fff;
+  flex:1;
 `;
 
 export const InputCadastro = styled.TextInput`
@@ -68,4 +70,19 @@ export const InputCadastro = styled.TextInput`
   padding:0 20px;
   margin-top:15px;
   justify-content: center;
+`;
+
+export const Titulo = styled.Text`
+  font-size: 20px;
+  justify-content: center;
+  color: #000;
+  marginLeft: 45px;
+  marginRight: 45px;
+  text-align: center;
+`;
+
+export const Img = styled.Image`
+  width: 70px;
+  height: 70px;
+
 `;
