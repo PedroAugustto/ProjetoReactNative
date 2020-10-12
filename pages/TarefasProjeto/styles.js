@@ -15,7 +15,6 @@ export const Title = styled.Text`
   margin-bottom:20px;
 `;
 
-
 export const TaskContainer = styled.View`
   flex-direction:row;
   justify-content:space-between;
@@ -43,13 +42,13 @@ export const TaskActions = styled.View`
 `;
 
 export const FormEnviar = styled.View`
-  flex-direction:row;
+  flex-direction:column;
+  border: 1px solid #000;
 `;
 
 export const Input = styled.TextInput`
   border:1px solid #333;
   height:60px;
-  flex:1;
   border-radius:5px;
   padding:0 20px;
 `;
@@ -61,10 +60,13 @@ export const Button = styled.TouchableOpacity`
   border-radius:5px;
   justify-content:center;
   align-items:center;
-  margin-left:10px;
-
+  width:100%;
 `;
 
 export const TextButton = styled.Text`
   font-size:20px;
+`;
+
+export const UserPicker = styled.Picker`
+  height:50px;
 `;

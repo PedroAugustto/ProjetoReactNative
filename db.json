@@ -30,32 +30,43 @@
       "descricao": "Criar tela de registro",
       "id": 1,
       "idProjeto": 1,
+      "idUsuario": 1,
       "concluido": true
     },
     {
       "descricao": "Página poder criar projetos",
+      "concluido": true,
       "id": 2,
-      "concluido": true
+      "idProjeto": 1,
+      "idUsuario": 1
     },
     {
       "descricao": "Página projetos levar para página das Tarefas do projeto (TarefasProjeto)",
       "concluido": false,
-      "id": 3
+      "id": 3,
+      "idProjeto": 1,
+      "idUsuario": 1
     },
     {
       "descricao": "TarefasProjeto só mostrar as tarefas do projeto selecionado",
       "concluido": false,
-      "id": 4
+      "id": 4,
+      "idProjeto": 1,
+      "idUsuario": 1
     },
     {
       "descricao": "Ao criar tarefa deve ser definido a qual usuário ela pertence",
       "id": 6,
-      "concluido": true
+      "concluido": true,
+      "idProjeto": 1,
+      "idUsuario": 1
     },
     {
       "descricao": "As tarefas só devem aparecer para o usuário da tarefa",
       "id": 7,
-      "concluido": false
+      "concluido": false,
+      "idProjeto": 1,
+      "idUsuario": 1
     }
   ]
 }

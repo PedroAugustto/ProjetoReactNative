@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Text, View } from 'react-native';
+import { Picker } from 'react-native';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import {
   Container,
   Title,
+  UserPicker,
   Task,
   TaskContainer,
   TaskActions,
@@ -24,16 +25,29 @@ import { UsuarioContext } from '../../contexts/user';
 const TarefasProjeto = () => {
 
   const usuario = useContext(UsuarioContext);
-  console.warn(usuario);
+  // console.warn(usuario);
 
   const [tasks, setTasks] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState("");
   const [newTask, setNewTask] = useState("");
+  // const [newUser, setNewUser] = useState("");
+  const [newProject, setNewProject] = useState("");
+
+  const loadUsers = async () => {
+    try {
+      const response = await api.get("usuarios")
+      setUsers(response.data)
+    } catch (err) {
+      console.warn("Falha ao recuperar usuários.")
+    }
+
+  }
 
   const loadTasks = async () => {
 
     try {
       const response = await api.get("tarefas");
-      // console.warn(response.data);
       setTasks(response.data)
     } catch (err) {
       console.warn("Falha ao recuperar as tarefas.")
@@ -44,13 +58,13 @@ const TarefasProjeto = () => {
   const handleAddTasks = async () => {
 
     if (newTask == "") {
-      // if (newTask.isEmpty()) {
-      // if (!(!!newTask)) {
       console.warn("você deve preencher a tarefa")
       return
     }
     const params = {
       descricao: newTask,
+      idUsuario: newUser,
+      idProjeto: newProject,
       concluido: false
     }
 
@@ -92,7 +106,8 @@ const TarefasProjeto = () => {
 
   //Apenas será executado uma única vez!
   useEffect(() => {
-    loadTasks();
+    loadTasks()
+    loadUsers();
   }, [])
 
   //Aerá executado toda vez que NewTask sofrer alterações
@@ -106,18 +121,27 @@ const TarefasProjeto = () => {
   return (
 
     <Container>
-      <Title>Projeto 1</Title>
       <FormEnviar>
+        <Title>Criar Tarefa</Title>
         <Input
-          placeholder="Digitar a tarefa ..."
+          placeholder="Digitar a tarefas..."
           onChangeText={(letras) => { setNewTask(letras) }}
           value={newTask}
-        />
+          />
+        <UserPicker selectedValue = {selectedUser} onValueChange = {setSelectedUser} >
+          <UserPicker.Item label = "Selecione um usuario..." value = "" />
+            {users.map( user => (
+              <UserPicker.Item label ={user.nome} value ={user.id} />
+          ))}
+
+        </UserPicker>
+
         <Button onPress={handleAddTasks}>
           <TextButton>Criar</TextButton>
         </Button>
       </FormEnviar>
 
+          <Title>Projeto 1</Title>
       <Tasks showsVerticalScrollIndicator={false}>
 
 
