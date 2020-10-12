@@ -20,6 +20,7 @@ export const ProjectContainer = styled.View`
   padding:15px 20px;
   margin-top:10px;
   border-radius:5px;
+  border: 1px solid #000;
   flex:1;
 `;
 
@@ -28,14 +29,19 @@ export const Projects = styled.ScrollView`
 `;
 
 export const Project = styled.View`
-  flex:1;
+  
 `;
 
-export const ProjectText = styled.Text`
-  font-size:20px;
+export const ProjectButton = styled.TouchableOpacity`
+ 
+  `;
+
+export const ProjectButtonText = styled.Text`
+  font-size: 20px;
 `;
 
-export const TaskActions = styled.View`
+
+export const ProjectActions = styled.View`
   flex-direction:row;
 `;
 
@@ -53,7 +59,7 @@ export const Input = styled.TextInput`
 
 export const Button = styled.TouchableOpacity`
   width:100px;
-  background-color:#04d361;
+  background-color: #5F9EA0;
   height:60px;
   border-radius:5px;
   justify-content:center;
@@ -65,3 +71,4 @@ export const Button = styled.TouchableOpacity`
 export const TextButton = styled.Text`
   font-size:20px;
 `;
+
