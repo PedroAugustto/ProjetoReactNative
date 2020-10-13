@@ -41,28 +41,28 @@ const Tarefas = () => {
 
   }
 
-  const handleAddTasks = async () => {
+  // const handleAddTasks = async () => {
 
-    if (newTask == "") {
-      // if (newTask.isEmpty()) {
-      // if (!(!!newTask)) {
-      console.warn("você deve preencher a tarefa")
-      return
-    }
-    const params = {
-      descricao: newTask,
-      concluido: false
-    }
+  //   if (newTask == "") {
+  //     // if (newTask.isEmpty()) {
+  //     // if (!(!!newTask)) {
+  //     console.warn("você deve preencher a tarefa")
+  //     return
+  //   }
+  //   const params = {
+  //     descricao: newTask,
+  //     concluido: false
+  //   }
 
-    try {
-      await api.post("tarefas", params);
-      setNewTask("");
-      loadTasks();
-    } catch (err) {
-      console.warn("erro ao salvar a tarefa")
-    }
+  //   try {
+  //     await api.post("tarefas", params);
+  //     setNewTask("");
+  //     loadTasks();
+  //   } catch (err) {
+  //     console.warn("erro ao salvar a tarefa")
+  //   }
 
-  }
+  // }
 
   const handleTasks = async (task) => {
 
@@ -107,7 +107,7 @@ const Tarefas = () => {
 
     <Container>
       <Title>Todas as tarefas</Title>
-      <FormEnviar>
+      {/* <FormEnviar>
         <Input
           placeholder="Digitar a tarefa ..."
           onChangeText={(letras) => { setNewTask(letras) }}
@@ -116,7 +116,7 @@ const Tarefas = () => {
         <Button onPress={handleAddTasks}>
           <TextButton>Criar</TextButton>
         </Button>
-      </FormEnviar>
+      </FormEnviar> */}
 
       <Tasks showsVerticalScrollIndicator={false}>
 
