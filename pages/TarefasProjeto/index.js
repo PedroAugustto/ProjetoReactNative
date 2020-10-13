@@ -6,6 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {
   Container,
   Title,
+  CreateTaskModal,
   UserPicker,
   Task,
   TaskContainer,
@@ -121,25 +122,34 @@ const TarefasProjeto = () => {
   return (
 
     <Container>
-      <FormEnviar>
-        <Title>Criar Tarefa</Title>
-        <InputTarefas
-          placeholder="Digitar a tarefas..."
-          onChangeText={(letras) => { setNewTask(letras) }}
-          value={newTask}
-          />
-        <UserPicker selectedValue = {selectedUser} onValueChange = {setSelectedUser} >
-          <UserPicker.Item label = "Selecione um usuario..." value = "" />
-            {users.map( user => (
-              <UserPicker.Item label ={user.nome} value ={user.id} />
-          ))}
+      {/* <CreateTaskModal visible="true"> */}
 
-        </UserPicker>
+        <FormEnviar>
+          <Title>Criar Tarefa</Title>
+          <MaterialCommunityIcons 
+            name="plus-circle"
+            color="#333"
+            size={32}
+            />
+          <InputTarefas
+            placeholder="Digitar a tarefas..."
+            onChangeText={(letras) => { setNewTask(letras) }}
+            value={newTask}
+            />
+          <UserPicker selectedValue = {selectedUser} onValueChange = {setSelectedUser} >
+            <UserPicker.Item label = "Selecione um usuario..." value = "" />
+              {users.map( user => (
+                <UserPicker.Item key={user.id} label ={user.nome} value ={user.id} />
+                ))}
 
-        <Button onPress={handleAddTasks}>
-          <TextButton>Criar</TextButton>
-        </Button>
-      </FormEnviar>
+          </UserPicker>
+
+          <Button onPress={handleAddTasks}>
+            <TextButton>Criar</TextButton>
+          </Button>
+        </FormEnviar>
+
+      {/* </CreateTaskModal> */}
 
           <Title>Projeto 1</Title>
       <Tasks showsVerticalScrollIndicator={false}>

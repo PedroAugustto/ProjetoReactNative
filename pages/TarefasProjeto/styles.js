@@ -70,3 +70,7 @@ export const TextButton = styled.Text`
 export const UserPicker = styled.Picker`
   height:50px;
 `;
+
+export const CreateTaskModal = styled.Modal`
+  
+`;
