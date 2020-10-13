@@ -7,6 +7,7 @@ import {
   Container,
   Title,
   CreateTaskModal,
+  Head,
   UserPicker,
   Task,
   TaskContainer,
@@ -16,7 +17,8 @@ import {
   TextButton,
   FormEnviar,
   Tasks,
-  TaskText
+  TaskText,
+  AddIcon
 } from './styles'
 
 import api from '../../services/api';
@@ -32,7 +34,7 @@ const TarefasProjeto = () => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState("");
   const [newTask, setNewTask] = useState("");
-  // const [newUser, setNewUser] = useState("");
+  const [open, setOpen] = useState(false);
   const [newProject, setNewProject] = useState("");
 
   const loadUsers = async () => {
@@ -122,15 +124,18 @@ const TarefasProjeto = () => {
   return (
 
     <Container>
-      {/* <CreateTaskModal visible="true"> */}
+      <CreateTaskModal visible={open}>
 
         <FormEnviar>
-          <Title>Criar Tarefa</Title>
-          <MaterialCommunityIcons 
-            name="plus-circle"
-            color="#333"
-            size={32}
-            />
+          <Head>
+            <MaterialCommunityIcons 
+              name="arrow-left"
+              color="#333"
+              size={40}
+              onPress={() => setOpen(false)}
+              />
+            <Title>Criar Tarefa</Title>
+          </Head>
           <InputTarefas
             placeholder="Digitar a tarefas..."
             onChangeText={(letras) => { setNewTask(letras) }}
@@ -149,7 +154,7 @@ const TarefasProjeto = () => {
           </Button>
         </FormEnviar>
 
-      {/* </CreateTaskModal> */}
+      </CreateTaskModal>
 
           <Title>Projeto 1</Title>
       <Tasks showsVerticalScrollIndicator={false}>
@@ -175,11 +180,20 @@ const TarefasProjeto = () => {
                 size={32}
                 onPress={() => { handleTasks(task) }}
               />
+              
             </TaskActions>
           </TaskContainer>
 
         )
         )}
+        <AddIcon>
+          <MaterialCommunityIcons 
+            name="plus-circle-outline"
+            color="#333"
+            size={50}
+            onPress={() => setOpen(true)}
+            />
+        </AddIcon>
       </Tasks>
     </Container>
 

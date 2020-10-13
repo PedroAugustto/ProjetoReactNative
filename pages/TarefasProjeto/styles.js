@@ -75,4 +75,13 @@ export const CreateTaskModal = styled.Modal`
   
 `;
 
+export const AddIcon = styled.View`
+  align-items:center;
+  margin:10px;
+  padding:10px;
+`;
+
+export const Head = styled.View`
+  flex-direction:row;
+`;
 //Salvando a Pátria (de novo)

@@ -23,6 +23,10 @@
     {
       "descricao": "Projeto Final",
       "id": 1
+    },
+    {
+      "descricao": "Projeto 1",
+      "id": 2
     }
   ],
   "tarefas": [
@@ -67,6 +71,12 @@
       "concluido": false,
       "idProjeto": 1,
       "idUsuario": 3
+    },
+    {
+      "descricao": "Teste",
+      "idUsuario": 3,
+      "id": 8,
+      "concluido": true
     }
   ]
 }
