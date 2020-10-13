@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 
 import { Image, ActivityIndicator, Text } from 'react-native';
 
-import logoImg from '../../assets/logo.png';
-import UsuarioImg from '../../assets/usuario.png'
+import logoImg from '../../assets/logo1.png';
+import UsuarioImg from '../../assets/usuario312.png'
 
 import {
   Container,
@@ -17,6 +17,8 @@ import {
   Titulo,
   InputCadastro,
   Img,
+  Box,
+  Box1,
 } from './styles'
 
 import { UsuarioContext } from '../../contexts/user';
@@ -49,56 +51,65 @@ const Login = () => {
 
   return (
     <Container>
-      <Image source={logoImg} />
-      <Input
-        value={email}
-        placeholder="Email"
-        onChangeText={text => setEmail(text)}
-      />
-      <Input
-        value={password}
-        placeholder="Senha"
-        onChangeText={text => setPassword(text)}
-        secureTextEntry={true} />
+      <Box>
+        <Img source={logoImg} />
+      </Box>
 
-      <Button onPress={handleSubmit} disabled={!password || !email}>
-        {carregando ?
-          <ActivityIndicator color="#333" />
-          :
-          <ButtonText>Acessar</ButtonText>
-        }
-      </Button>
+      <Box1>
+        <Input
+          value={email}
+          placeholder="Email"
+          onChangeText={text => setEmail(text)}
+        />
+        <Input
+          value={password}
+          placeholder="Senha"
+          onChangeText={text => setPassword(text)}
+          secureTextEntry={true} />
 
-      <Btn onPress={() => setOpen(true)}>
-        <BtnText>Não possui um login? Cadastre-se</BtnText>
-      </Btn>
+        <Button onPress={handleSubmit} disabled={!password || !email}>
+          {carregando ?
+            <ActivityIndicator color="#333" />
+            :
+            <ButtonText>Acessar</ButtonText>
+          }
+        </Button>
+
+        <Btn onPress={() => setOpen(true)}>
+          <BtnText Bold>Não possui um login? Cadastre-se</BtnText>
+        </Btn>
+      </Box1>
 
       <Slide visible={open}>
         <ModalContainer>
           
-          {/* <Image source={UsuarioImg} width = {30} height = {30} /> */}
+          {/* <Image source={UsuarioImg}/> */}
 
-          <Titulo>Informe os seguintes dados para criar um usuário:</Titulo>
+          <Titulo>Complete com seus dados:</Titulo>
 
           <InputCadastro
-            /* value = {NewNome} */
+            /* value = {NomeCadastro} */
             placeholder = 'Digite seu nome'
             /* onChangeText = {} */
           />
           <InputCadastro
-            /* value = {newEmail} */
+            /* value = {EmailCadastro} */
             placeholder = 'Digite seu email'
           /*  onChangeText = {} */
           />
           <InputCadastro
-            /* value = {NewPassword} */
+            /* value = {PasswordCadastro} */
             placeholder = 'Digite sua senha'
             /* onChangeText = {} */
           />
 
-          <Btn onPress={() => setOpen(false)}>
+          <Button>
+            <ButtonText>Cadastrar</ButtonText>
+          </Button>
+
+          <Button onPress={() => setOpen(false)}>
             <ButtonText>Já possui um login?</ButtonText>
-          </Btn>
+          </Button>
 
         </ModalContainer>
       </Slide>

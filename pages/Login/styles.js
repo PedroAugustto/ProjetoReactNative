@@ -1,11 +1,32 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-  background-color:#fff;
+export const Container = styled.SafeAreaView`
+background-color:#1f4f7f;
+flex:1;
+justify-content:center;
+align-items:center;
+padding:0 20px;
+`;
+
+export const Box = styled.View`
+background-color:#1f4f7f;
   flex:1;
   justify-content:center;
   align-items:center;
-  padding:0 20px;
+  padding:0 20px; 
+`
+export const Box1 = styled.View`
+  background-color:#1f4f7f;
+  flex:1;
+  padding:0 20px; 
+`
+export const Img = styled.Image`
+  width: 300px;
+  height: 300px;
+  align-items: center;
+  margin-bottom: 30px
+  justify-content: center;
+  display: flex;
 `;
 
 export const Input = styled.TextInput`
@@ -15,12 +36,13 @@ export const Input = styled.TextInput`
   border-radius:5px;
   padding:0 20px;
   margin-top:15px;
+  background-color: #fff;
 `;
 
 export const Button = styled.TouchableOpacity`
   width:290px;
   height: 50px;
-  background-color: #04d361;
+  background-color: #334;
   border-radius:5px;
   justify-content:center;
   align-items:center;
@@ -29,28 +51,28 @@ export const Button = styled.TouchableOpacity`
 `;
 
 export const ButtonText = styled.Text`
-  color:#333;
+  color:#fff;
   font-size:18px;
   font-weight:bold;
 `;
 
 export const Btn = styled.TouchableOpacity`
   width:290px;
-  height: 15px;
-  background-color: #fff;
+  height: 35px;
+  background-color: #1f4f7f;
   border-radius:5px;
   justify-content:center;
   align-items:center;
-  margin-top:40px;
+  margin-top:15px;
 `;
 
 export const BtnText = styled.Text`
-  color:#333;
-  font-size:10px;
+  color:#fff;
+  font-size:15px;
+  font-weight: bold;
 `;
 
 export const Slide= styled.Modal`
-  background-color:#808080;
   flex:1;
   padding:0 20px;
 `;
@@ -58,7 +80,7 @@ export const Slide= styled.Modal`
 export const ModalContainer = styled.View`
   justify-content: center;
   align-items: center;
-  background-color:#fff;
+  background-color:#1f4f7f;
   flex:1;
 `;
 
@@ -70,19 +92,17 @@ export const InputCadastro = styled.TextInput`
   padding:0 20px;
   margin-top:15px;
   justify-content: center;
+  background-color: #fff;
 `;
 
 export const Titulo = styled.Text`
   font-size: 20px;
   justify-content: center;
-  color: #000;
+  color: #fff;
   marginLeft: 45px;
   marginRight: 45px;
   text-align: center;
-`;
-
-export const Img = styled.Image`
-  width: 70px;
-  height: 70px;
-
+  width: 290px;
+  height: 30px;
+  align-items: center;
 `;
