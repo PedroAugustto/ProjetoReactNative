@@ -74,6 +74,7 @@ const TarefasProjeto = () => {
     try {
       await api.post("tarefas", params);
       setNewTask("");
+      setOpen(false)
       loadTasks();
     } catch (err) {
       console.warn("erro ao salvar a tarefa")
