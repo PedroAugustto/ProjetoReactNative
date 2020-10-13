@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-
+import api from "../../services/api"
 import { Image, ActivityIndicator, Text } from 'react-native';
 
 import logoImg from '../../assets/logo1.png';
@@ -31,6 +31,24 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [carregando, setCarregando] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const [nomeCadastro, setNomeCadastro] = useState("");
+  const [emailCadastro, setEmailCadastro] = useState("");
+  const [senhaCadastro, setSenhaCadastro] = useState("");
+
+  const handleNomeCadastro = texto => setNomeCadastro(texto)
+  const handleEmailCadastro = texto => setEmailCadastro(texto)
+  const handleSenhaCadastro = texto => setSenhaCadastro(texto)
+
+  const handleSubmitRegistro = async () => {
+    const novoUsuario = {
+      nome: nomeCadastro,
+      email: emailCadastro,
+      password: senhaCadastro
+    }
+    let user =await api.post ("/usuarios", novoUsuario)
+    console.log(user)
+  }
 
   async function handleSubmit() {
     setCarregando(true)
@@ -88,22 +106,24 @@ const Login = () => {
           <Titulo>Complete com seus dados:</Titulo>
 
           <InputCadastro
-            /* value = {NomeCadastro} */
+            value = {nomeCadastro}
             placeholder = 'Digite seu nome'
-            /* onChangeText = {} */
+            onChangeText = {handleNomeCadastro}
           />
           <InputCadastro
-            /* value = {EmailCadastro} */
+            value = {emailCadastro}
             placeholder = 'Digite seu email'
-          /*  onChangeText = {} */
+           onChangeText = {handleEmailCadastro}
           />
           <InputCadastro
-            /* value = {PasswordCadastro} */
+            value = {senhaCadastro}
             placeholder = 'Digite sua senha'
-            /* onChangeText = {} */
+            onChangeText = {handleSenhaCadastro}
           />
 
-          <Button>
+          <Button
+            onPress = {() => handleSubmitRegistro()}
+          >
             <ButtonText>Cadastrar</ButtonText>
           </Button>
 
