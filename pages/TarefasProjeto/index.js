@@ -17,6 +17,7 @@ import {
   FormEnviar,
   Tasks,
   TaskText,
+  SetaVoltar
 } from './styles'
 
 import api from '../../services/api';
@@ -102,7 +103,6 @@ const TarefasProjeto = () => {
     } catch (err) {
       console.warn("erro ao deletar tarefa")
     }
-    // console.warn(`delete ${id}`)
   }
 
   //Apenas será executado uma única vez!
@@ -111,25 +111,18 @@ const TarefasProjeto = () => {
     loadUsers();
   }, [])
 
-  //Aerá executado toda vez que NewTask sofrer alterações
-  //apenas um exemplo, sem relação com a solução atual
-  useEffect(() => {
-    // console.warn(newTask)
-  }, [newTask])
-
-
-
   return (
 
     <Container>
         <FormEnviar>
           <Head>
-            <MaterialCommunityIcons 
-              name="arrow-left"
-              color="#333"
-              size={40}
-              onPress={() => setOpen(false)}
+            <SetaVoltar>
+              <MaterialCommunityIcons 
+                name="arrow-left"
+                color="#D0FEFE"
+                size={40}
               />
+            </SetaVoltar>
             <Title>Criar Tarefa</Title>
           </Head>
           <InputTarefas

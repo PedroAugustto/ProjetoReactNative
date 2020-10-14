@@ -48,6 +48,7 @@ const Login = () => {
     }
     let user =await api.post ("/usuarios", novoUsuario)
     console.log(user)
+    setOpen(false)
   }
 
   async function handleSubmit() {
@@ -94,7 +95,8 @@ const Login = () => {
         </Button>
 
         <Btn onPress={() => setOpen(true)}>
-          <BtnText Bold>Não possui um login? Cadastre-se</BtnText>
+          <BtnText Bold>Não possui um login?</BtnText>
+          <BtnText Bold>Cadastre-se</BtnText>
         </Btn>
       </Box1>
 
@@ -127,9 +129,10 @@ const Login = () => {
             <ButtonText>Cadastrar</ButtonText>
           </Button>
 
-          <Button onPress={() => setOpen(false)}>
-            <ButtonText>Já possui um login?</ButtonText>
-          </Button>
+          <Btn onPress={() => setOpen(false)}>
+            <BtnText Bold>Já possui um login?</BtnText>
+            <BtnText Bold>Entrar</BtnText>
+          </Btn>
 
         </ModalContainer>
       </Slide>

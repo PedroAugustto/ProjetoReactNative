@@ -61,7 +61,7 @@ const Dashboard = () => {
         percent={percentual}
         radius={100}
         borderWidth={30}
-        color="tomato"
+        color="#017374"
         shadowColor="#999"
         bgColor="#fff"
       >

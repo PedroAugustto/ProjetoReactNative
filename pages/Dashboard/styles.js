@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  background-color:#fff;
+  background-color:#1F3B4D;
   flex:1;
   justify-content:center;
   align-items:center;
@@ -11,7 +11,7 @@ export const Container = styled.View`
 export const Button = styled.TouchableOpacity`
   width:290px;
   height: 50px;
-  background-color: tomato;
+  background-color: #017374;
   border-radius:5px;
   justify-content:center;
   align-items:center;
@@ -26,13 +26,13 @@ export const ButtonText = styled.Text`
 `;
 
 export const Titulo = styled.Text`
-color:#333;
+color:#fff;
 font-size:18px;
 font-weight:bold;
 `;
 
 export const SubTitulo = styled.Text`
-color:#333;
+color:#fff;
 font-size:13px;
 margin-bottom:15px;
 `;

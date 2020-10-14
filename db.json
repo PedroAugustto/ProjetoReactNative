@@ -2,18 +2,6 @@
   "usuarios": [
     {
       "id": 1,
-      "nome": "Antonio Podgorski",
-      "email": "antonio@domob.me",
-      "password": "123123"
-    },
-    {
-      "id": 2,
-      "nome": "Cláudio Leal (backupme)",
-      "email": "claudio@claudio.com",
-      "password": "111111"
-    },
-    {
-      "id": 3,
       "nome": "Pedro Chaves",
       "email": "chaves@teste.com",
       "password": "123"
@@ -22,12 +10,24 @@
       "nome": "Anderson ",
       "email": "anderson@teste.com",
       "password": "1234",
+      "id": 2
+    },
+    {
+      "nome": "carol",
+      "email": "carol@teste.com",
+      "password": "123",
+      "id": 3
+    },
+    {
+      "nome": "Douglas",
+      "email": "douglas@teste.com",
+      "password": "123",
       "id": 4
     },
     {
-      "nome": "douglas",
-      "email": "douglas@teste.com",
-      "password": "321",
+      "nome": "Anderson",
+      "email": "anderson@teste.com",
+      "password": "123",
       "id": 5
     }
   ],
@@ -85,16 +85,22 @@
       "idUsuario": 3
     },
     {
-      "descricao": "Teste",
-      "idUsuario": 3,
-      "id": 8,
-      "concluido": true
+      "descricao": "Programar React",
+      "idUsuario": 6,
+      "concluido": false,
+      "id": 11
     },
     {
       "descricao": "Teste",
-      "idUsuario": 4,
+      "idUsuario": 5,
       "concluido": false,
-      "id": 9
+      "id": 12
+    },
+    {
+      "descricao": "Teste",
+      "idUsuario": 6,
+      "concluido": false,
+      "id": 13
     }
   ]
 }

@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  background-color:#1f4f7f;
+  background-color:#1F3B4D;
   flex:1;
   /* justify-content:center; */
   padding:0 20px;
@@ -9,10 +9,12 @@ export const Container = styled.View`
 
 export const Title = styled.Text`
   text-align:center;
-  color:#D0FEFE;
+  color:#fff;
   font-size:30px;
-  margin-top:10px;
-  margin-bottom:20px;
+`;
+
+export const SetaVoltar = styled.View`
+  margin-right: 50px;
 `;
 
 export const TaskContainer = styled.View`
@@ -62,8 +64,7 @@ export const Button = styled.TouchableOpacity`
   border-radius:5px;
   justify-content:center;
   align-items:center;
-  width:100%;
-  margin:0px;
+  margin:10px;
 `;
 
 export const TextButton = styled.Text`
@@ -74,10 +75,13 @@ export const TextButton = styled.Text`
 export const UserPicker = styled.Picker`
   height:50px;
   background-color: #D0FEFE;
+  margin: 10px;
+  color: #D0FEFE;
 `;
 
 export const Head = styled.View`
   flex-direction:row;
-
+  align-items: center;
+  margin: 10px;
 `;
 //Salvando a Pátria (de novo)
