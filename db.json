@@ -17,6 +17,18 @@
       "nome": "Pedro Chaves",
       "email": "chaves@teste.com",
       "password": "123"
+    },
+    {
+      "nome": "Anderson ",
+      "email": "anderson@teste.com",
+      "password": "1234",
+      "id": 4
+    },
+    {
+      "nome": "douglas",
+      "email": "douglas@teste.com",
+      "password": "321",
+      "id": 5
     }
   ],
   "projetos": [
@@ -77,6 +89,12 @@
       "idUsuario": 3,
       "id": 8,
       "concluido": true
+    },
+    {
+      "descricao": "Teste",
+      "idUsuario": 4,
+      "concluido": false,
+      "id": 9
     }
   ]
 }

@@ -14,9 +14,19 @@ import {
     Button,
     TextButton,
     FormEnviar,
-    Projects,
+    List,
     ProjectButton,
-    ProjectButtonText
+    ProjectButtonText,
+    CreateTaskModal,
+    Head,
+    UserPicker,
+    Task,
+    TaskContainer,
+    TaskActions,
+    InputTarefas,
+    Tasks,
+    TaskText,
+    AddIcon
   } from './styles'
 
 import api from '../../services/api';
@@ -25,14 +35,22 @@ import { UsuarioContext } from '../../contexts/user';
 
 const Projetos = () => {
 
+    
     const navigation = useNavigation();
 
     const usuario = useContext(UsuarioContext);
-    console.warn(usuario)
+
+    const [tasks, setTasks] = useState([]);
+    const [users, setUsers] = useState([]);
+    const [selectedUser, setSelectedUser] = useState("");
+    const [newTask, setNewTask] = useState("");
+    const [open, setOpen] = useState(false);
 
     const [projects, setProjects] = useState([]);
     const [newProject, setNewProject] = useState("");
-    
+
+    const [tela,setTela] = useState(0);
+
     const loadProjects = async () => {
 
       try {
@@ -44,11 +62,8 @@ const Projetos = () => {
         }
     }
 
-    // this.prop.navigation.navigate("TarefasProjeto")
     const handleDirecionarParaTarefasProjeto = () => {
-      navigation.reset({
-          routes:[{name: 'TarefasProjeto'}]
-      });
+      navigation.reset({routes:[{name: 'TarefasProjeto'}]});
   }
     
     const handleAddProjects = async () => {
@@ -95,14 +110,28 @@ const Projetos = () => {
         }
       }
 
-      useEffect(() => {
-        loadProjects();
-      }, [])
+      
+      
+      //TAsks
 
-      useEffect(() => {
-        console.warn(newProject)
-      }, [newProject])
+      const loadTasks = async () => {
 
+        try {
+          const response = await api.get(`tarefas?idUsuario=${usuario.user.id}`);
+          setTasks(response.data)
+        } catch (err) {
+          console.warn("Falha ao recuperar as tarefas.")
+        }
+        
+      }
+    useEffect(() => {
+      loadProjects()
+      loadTasks();
+    }, [])
+    useEffect(() => {
+      console.warn(newProject)
+    }, [newProject])
+    
     return(
     <Container>
         <Title>Projetos</Title>
@@ -116,18 +145,25 @@ const Projetos = () => {
           <TextButton>Criar</TextButton>
         </Button>
       </FormEnviar>
-      <Projects showsVerticalScrollIndicator={false}>
+      <List showsVerticalScrollIndicator={false}>
 
-      {projects.map(project => (
+      { tela == 0? projects.map(project => (
       <ProjectContainer key={project.id} finalizado={project.concluido}>
         <Project>
-            <ProjectButton onPress={() => { handleDirecionarParaTarefasProjeto() }}>
+            <ProjectButton>
               <ProjectButtonText>
                 {project.descricao}
               </ProjectButtonText>
             </ProjectButton>
         </Project>
         <ProjectActions>
+
+              <MaterialCommunityIcons
+                name="arrow-right"
+                color="#333"
+                size={32}
+                onPress={() => { setTela(1) }}
+              />
 
               <MaterialCommunityIcons
                 name="delete-outline"
@@ -139,8 +175,35 @@ const Projetos = () => {
         </ProjectActions>
     </ProjectContainer>
     )
-    )}
-    </Projects>
+    ): tasks.map(task => (
+      <TaskContainer key={task.id} finalizado={task.concluido}>
+        <Task >
+          <TaskText>{task.descricao}</TaskText>
+        </Task>
+        <TaskActions>
+
+          <MaterialCommunityIcons
+            name="delete-outline"
+            color="#333"
+            size={32}
+            onPress={() => { handleRemoveTask(task) }}
+          />
+
+          <MaterialCommunityIcons
+            name={task.concluido ? "check-circle-outline" : "circle-outline"}
+            color={task.concluido ? "#04d361" : "#333"}
+            size={32}
+            onPress={() => { handleTasks(task) }}
+            />
+          
+        </TaskActions>
+      </TaskContainer>
+
+     )
+     )
+     
+    }
+    </List>
     </Container>
     )
 }

@@ -28,7 +28,6 @@ import { UsuarioContext } from '../../contexts/user';
 const TarefasProjeto = () => {
 
   const usuario = useContext(UsuarioContext);
-  // console.warn(usuario);
 
   const [tasks, setTasks] = useState([]);
   const [users, setUsers] = useState([]);
