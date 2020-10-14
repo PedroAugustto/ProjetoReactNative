@@ -16,8 +16,8 @@ const AppRoutes = () => {
       initialRouteName="Projetos"
       tabBarOptions={
         {
-          activeTintColor: 'tomato',
-          inactiveTintColor: '#ccc'
+          activeTintColor: '#017374',
+          inactiveTintColor: '#ccc',
         }
       }>
       <Tab.Screen

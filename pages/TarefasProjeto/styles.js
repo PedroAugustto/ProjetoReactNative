@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  background-color:#fff;
+  background-color:#1f4f7f;
   flex:1;
   /* justify-content:center; */
   padding:0 20px;
@@ -9,7 +9,7 @@ export const Container = styled.View`
 
 export const Title = styled.Text`
   text-align:center;
-  color:#000;
+  color:#D0FEFE;
   font-size:30px;
   margin-top:10px;
   margin-bottom:20px;
@@ -18,7 +18,7 @@ export const Title = styled.Text`
 export const TaskContainer = styled.View`
   flex-direction:row;
   justify-content:space-between;
-  background-color: ${props => props.finalizado ? "#f9f9f9" : "#e6e6e6"};
+  background-color: ${props => props.finalizado ? "#D0FEFE" : "#D0FEFE"};
   padding:15px 20px;
   margin-top:10px;
   border-radius:5px;
@@ -43,7 +43,7 @@ export const TaskActions = styled.View`
 
 export const FormEnviar = styled.View`
   flex-direction:column;
-  border: 1px solid #000;
+  
 `;
 
 export const InputTarefas = styled.TextInput`
@@ -51,37 +51,33 @@ export const InputTarefas = styled.TextInput`
   height:60px;
   border-radius:5px;
   padding:0 20px;
+  background-color: #D0FEFE;
+  margin: 10px;
+  align-items: center;
 `;
 
 export const Button = styled.TouchableOpacity`
-  width:100px;
-  background-color:#04d361;
+  background-color:#017374;
   height:60px;
   border-radius:5px;
   justify-content:center;
   align-items:center;
   width:100%;
+  margin:0px;
 `;
 
 export const TextButton = styled.Text`
   font-size:20px;
+  color: #D0FEFE;
 `;
 
 export const UserPicker = styled.Picker`
   height:50px;
-`;
-
-export const CreateTaskModal = styled.Modal`
-  
-`;
-
-export const AddIcon = styled.View`
-  align-items:center;
-  margin:10px;
-  padding:10px;
+  background-color: #D0FEFE;
 `;
 
 export const Head = styled.View`
   flex-direction:row;
+
 `;
 //Salvando a Pátria (de novo)

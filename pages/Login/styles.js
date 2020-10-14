@@ -36,13 +36,13 @@ export const Input = styled.TextInput`
   border-radius:5px;
   padding:0 20px;
   margin-top:15px;
-  background-color: #fff;
+  background-color: #D0FEFE;
 `;
 
 export const Button = styled.TouchableOpacity`
   width:290px;
   height: 50px;
-  background-color: #334;
+  background-color: #017374;
   border-radius:5px;
   justify-content:center;
   align-items:center;
@@ -92,7 +92,7 @@ export const InputCadastro = styled.TextInput`
   padding:0 20px;
   margin-top:15px;
   justify-content: center;
-  background-color: #fff;
+  background-color: #D0FEFE;
 `;
 
 export const Titulo = styled.Text`

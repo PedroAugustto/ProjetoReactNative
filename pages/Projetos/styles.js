@@ -1,14 +1,14 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  background-color:#fff;
+  background-color:#1F3B4D;
   flex:1;
   padding:0 20px;
 `;
 
 export const Title = styled.Text`
   text-align:center;
-  color:#000;
+  color:#D0FEFE;
   font-size:30px;
   margin-top:10px;
   margin-bottom:20px;
@@ -16,7 +16,7 @@ export const Title = styled.Text`
 export const ProjectContainer = styled.View`
   flex-direction:row;
   justify-content:space-between;
-  background-color: #f9f9f9};
+  background-color: #D0FEFE;;
   padding:15px 20px;
   margin-top:10px;
   border-radius:5px;
@@ -33,8 +33,8 @@ export const Project = styled.View`
 `;
 
 export const ProjectButton = styled.TouchableOpacity`
- 
-  `;
+  
+`;
 
 export const ProjectButtonText = styled.Text`
   font-size: 20px;
@@ -55,11 +55,12 @@ export const Input = styled.TextInput`
   flex:1;
   border-radius:5px;
   padding:0 20px;
+  background-color: #D0FEFE;
 `;
 
 export const Button = styled.TouchableOpacity`
   width:100px;
-  background-color: #5F9EA0;
+  background-color: #017374;
   height:60px;
   border-radius:5px;
   justify-content:center;
@@ -70,6 +71,7 @@ export const Button = styled.TouchableOpacity`
 
 export const TextButton = styled.Text`
   font-size:20px;
+  color: #D0FEFE;
 `;
 
 export const TaskContainer = styled.View`

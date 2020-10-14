@@ -112,7 +112,7 @@ const Projetos = () => {
 
       
       
-      //TAsks
+      //Tasks
 
       const loadTasks = async () => {
 
@@ -147,23 +147,16 @@ const Projetos = () => {
       </FormEnviar>
       <List showsVerticalScrollIndicator={false}>
 
-      { tela == 0? projects.map(project => (
-      <ProjectContainer key={project.id} finalizado={project.concluido}>
+      {projects.map(project => (
+      <ProjectContainer key={project.id} idProjetos = {project.id} finalizado={project.concluido}>
         <Project>
-            <ProjectButton>
+            <ProjectButton onPress = {() => navigation.navigate('TarefasProjeto')}>
               <ProjectButtonText>
                 {project.descricao}
               </ProjectButtonText>
             </ProjectButton>
         </Project>
         <ProjectActions>
-
-              <MaterialCommunityIcons
-                name="arrow-right"
-                color="#333"
-                size={32}
-                onPress={() => { setTela(1) }}
-              />
 
               <MaterialCommunityIcons
                 name="delete-outline"
@@ -175,33 +168,7 @@ const Projetos = () => {
         </ProjectActions>
     </ProjectContainer>
     )
-    ): tasks.map(task => (
-      <TaskContainer key={task.id} finalizado={task.concluido}>
-        <Task >
-          <TaskText>{task.descricao}</TaskText>
-        </Task>
-        <TaskActions>
-
-          <MaterialCommunityIcons
-            name="delete-outline"
-            color="#333"
-            size={32}
-            onPress={() => { handleRemoveTask(task) }}
-          />
-
-          <MaterialCommunityIcons
-            name={task.concluido ? "check-circle-outline" : "circle-outline"}
-            color={task.concluido ? "#04d361" : "#333"}
-            size={32}
-            onPress={() => { handleTasks(task) }}
-            />
-          
-        </TaskActions>
-      </TaskContainer>
-
-     )
-     )
-     
+    )
     }
     </List>
     </Container>

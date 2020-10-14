@@ -6,7 +6,6 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {
   Container,
   Title,
-  CreateTaskModal,
   Head,
   UserPicker,
   Task,
@@ -18,7 +17,6 @@ import {
   FormEnviar,
   Tasks,
   TaskText,
-  AddIcon
 } from './styles'
 
 import api from '../../services/api';
@@ -124,8 +122,6 @@ const TarefasProjeto = () => {
   return (
 
     <Container>
-      <CreateTaskModal visible={open}>
-
         <FormEnviar>
           <Head>
             <MaterialCommunityIcons 
@@ -153,8 +149,6 @@ const TarefasProjeto = () => {
             <TextButton>Criar</TextButton>
           </Button>
         </FormEnviar>
-
-      </CreateTaskModal>
 
           <Title>Projeto 1</Title>
       <Tasks showsVerticalScrollIndicator={false}>
@@ -186,14 +180,6 @@ const TarefasProjeto = () => {
 
         )
         )}
-        <AddIcon>
-          <MaterialCommunityIcons 
-            name="plus-circle-outline"
-            color="#333"
-            size={50}
-            onPress={() => setOpen(true)}
-            />
-        </AddIcon>
       </Tasks>
     </Container>
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  background-color:#fff;
+  background-color:#1f4f7f;
   flex:1;
   /* justify-content:center; */
   padding:0 20px;
@@ -9,7 +9,7 @@ export const Container = styled.View`
 
 export const Title = styled.Text`
   text-align:center;
-  color:#000;
+  color:#fff;
   font-size:30px;
   margin-top:10px;
   margin-bottom:20px;
@@ -19,7 +19,7 @@ export const Title = styled.Text`
 export const TaskContainer = styled.View`
   flex-direction:row;
   justify-content:space-between;
-  background-color: ${props => props.finalizado ? "#f9f9f9" : "#e6e6e6"};
+  background-color: ${props => props.finalizado ? "#D0FEFE" : "#D0FEFE"};
   padding:15px 20px;
   margin-top:10px;
   border-radius:5px;
