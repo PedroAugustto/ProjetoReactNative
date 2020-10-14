@@ -29,7 +29,7 @@ const Tarefas = () => {
   const loadTasks = async () => {
 
     try {
-      const response = await api.get("tarefas");
+      const response = await api.get(`tarefas?idUsuario=${usuario.user.id}`);
       // console.warn(response.data);
       setTasks(response.data)
     } catch (err) {

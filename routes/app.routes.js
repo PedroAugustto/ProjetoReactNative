@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Projetos from '../pages/Projetos';
@@ -9,11 +10,22 @@ import Dashboard from '../pages/Dashboard';
 
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator ();
+
+const StackProjetos = () => {
+  return(
+      <Stack.Navigator 
+      initialRouteName="Projetos">
+          <Stack.Screen  name="Projetos" component={Projetos}/>
+          <Stack.Screen  name="TarefasProjeto" component={TarefasProjeto}/>
+      </Stack.Navigator>
+  )
+}
 
 const AppRoutes = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Projetos"
+      initialRouteName="StackProjetos"
       tabBarOptions={
         {
           activeTintColor: '#017374',
@@ -21,8 +33,8 @@ const AppRoutes = () => {
         }
       }>
       <Tab.Screen
-      name="Projetos"
-      component={Projetos}
+      name="StackProjetos"
+      component={StackProjetos}
       options={
         {
           tabBarIcon: ({ color }) => (
@@ -36,19 +48,6 @@ const AppRoutes = () => {
       <Tab.Screen
         name="Tarefas"
         component={Tarefas}
-        options={
-          {
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons
-                name="playlist-check"
-                color={color}
-                size={32} />
-            )
-          }
-        } />
-      <Tab.Screen
-        name="TarefasProjeto"
-        component={TarefasProjeto}
         options={
           {
             tabBarIcon: ({ color }) => (

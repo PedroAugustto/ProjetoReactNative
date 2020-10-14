@@ -39,6 +39,11 @@ export const TaskText = styled.Text`
   font-size:20px;
 `;
 
+export const TaskTextNome = styled.Text`
+  font-size:15px;
+  color:gray;
+`; 
+
 export const TaskActions = styled.View`
   flex-direction:row;
 `;

@@ -33,74 +33,42 @@
   ],
   "projetos": [
     {
-      "descricao": "Projeto Final",
+      "descricao": "Projeto A",
       "id": 1
     },
     {
-      "descricao": "Projeto 1",
+      "descricao": "Projeto B",
       "id": 2
     }
   ],
   "tarefas": [
     {
-      "descricao": "Criar tela de registro",
-      "id": 1,
-      "idProjeto": 1,
+      "descricao": "Projeto A",
       "idUsuario": 1,
-      "concluido": true
-    },
-    {
-      "descricao": "Página poder criar projetos",
-      "concluido": true,
-      "id": 2,
       "idProjeto": 1,
-      "idUsuario": 1
+      "concluido": false,
+      "id": 1
     },
     {
-      "descricao": "Página projetos levar para página das Tarefas do projeto (TarefasProjeto)",
-      "concluido": false,
-      "id": 3,
+      "descricao": "Tarefa Anderson",
+      "idUsuario": 2,
       "idProjeto": 1,
-      "idUsuario": 2
+      "concluido": false,
+      "id": 2
     },
     {
-      "descricao": "TarefasProjeto só mostrar as tarefas do projeto selecionado",
+      "descricao": "Projeto B",
+      "idUsuario": 1,
+      "idProjeto": 2,
       "concluido": false,
-      "id": 4,
+      "id": 3
+    },
+    {
+      "descricao": "Tarefa Carol",
+      "idUsuario": 3,
       "idProjeto": 1,
-      "idUsuario": 2
-    },
-    {
-      "descricao": "Ao criar tarefa deve ser definido a qual usuário ela pertence",
-      "id": 6,
-      "concluido": true,
-      "idProjeto": 1,
-      "idUsuario": 3
-    },
-    {
-      "descricao": "As tarefas só devem aparecer para o usuário da tarefa",
-      "id": 7,
       "concluido": false,
-      "idProjeto": 1,
-      "idUsuario": 3
-    },
-    {
-      "descricao": "Programar React",
-      "idUsuario": 6,
-      "concluido": false,
-      "id": 11
-    },
-    {
-      "descricao": "Teste",
-      "idUsuario": 5,
-      "concluido": false,
-      "id": 12
-    },
-    {
-      "descricao": "Teste",
-      "idUsuario": 6,
-      "concluido": false,
-      "id": 13
+      "id": 4
     }
   ]
 }

@@ -17,6 +17,7 @@ import {
   FormEnviar,
   Tasks,
   TaskText,
+  TaskTextNome,
   SetaVoltar
 } from './styles'
 
@@ -24,10 +25,12 @@ import api from '../../services/api';
 
 import { UsuarioContext } from '../../contexts/user';
 
-const TarefasProjeto = () => {
+const TarefasProjeto = (props) => {
 
+  console.log(props)
   const usuario = useContext(UsuarioContext);
 
+  // const { ProjetoId , ProjetoNome} = route.params;
   const [tasks, setTasks] = useState([]);
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState("");
@@ -48,7 +51,7 @@ const TarefasProjeto = () => {
   const loadTasks = async () => {
 
     try {
-      const response = await api.get(`tarefas?idUsuario=${usuario.user.id}`);
+      const response = await api.get(`tarefas?idProjeto=${props.route.params.ProjetoId}`);
       setTasks(response.data)
     } catch (err) {
       console.warn("Falha ao recuperar as tarefas.")
@@ -62,10 +65,16 @@ const TarefasProjeto = () => {
       console.warn("você deve preencher a tarefa")
       return
     }
+
+    if (selectedUser == "") {
+      console.warn("você deve escolher um usuário")
+      return
+    }
+
     const params = {
       descricao: newTask,
       idUsuario: selectedUser,
-      // idProjeto: newProject,
+      idProjeto: props.route.params.ProjetoId,
       concluido: false
     }
 
@@ -143,7 +152,7 @@ const TarefasProjeto = () => {
           </Button>
         </FormEnviar>
 
-          <Title>Projeto 1</Title>
+        <Title>{props.route.params.ProjetoNome}</Title>
       <Tasks showsVerticalScrollIndicator={false}>
 
 
@@ -151,6 +160,7 @@ const TarefasProjeto = () => {
           <TaskContainer key={task.id} finalizado={task.concluido}>
             <Task >
               <TaskText>{task.descricao}</TaskText>
+              <TaskTextNome>nome do usuario</TaskTextNome>
             </Task>
             <TaskActions>
 

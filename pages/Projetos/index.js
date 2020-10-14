@@ -16,17 +16,7 @@ import {
     FormEnviar,
     List,
     ProjectButton,
-    ProjectButtonText,
-    CreateTaskModal,
-    Head,
-    UserPicker,
-    Task,
-    TaskContainer,
-    TaskActions,
-    InputTarefas,
-    Tasks,
-    TaskText,
-    AddIcon
+    ProjectButtonText
   } from './styles'
 
 import api from '../../services/api';
@@ -41,11 +31,8 @@ const Projetos = () => {
     const usuario = useContext(UsuarioContext);
 
     const [tasks, setTasks] = useState([]);
-    const [users, setUsers] = useState([]);
-    const [selectedUser, setSelectedUser] = useState("");
-    const [newTask, setNewTask] = useState("");
-    const [open, setOpen] = useState(false);
 
+    const [test,setTest] = useState([]);
     const [projects, setProjects] = useState([]);
     const [newProject, setNewProject] = useState("");
 
@@ -150,7 +137,9 @@ const Projetos = () => {
       {projects.map(project => (
       <ProjectContainer key={project.id} idProjetos = {project.id} finalizado={project.concluido}>
         <Project>
-            <ProjectButton onPress = {() => navigation.navigate('TarefasProjeto')}>
+            <ProjectButton onPress = {() => navigation.navigate('TarefasProjeto',
+                        {ProjetoId : project.id,
+                        ProjetoNome : project.descricao})}>
               <ProjectButtonText>
                 {project.descricao}
               </ProjectButtonText>
