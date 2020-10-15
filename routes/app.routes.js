@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Projetos from '../pages/Projetos';
 import TarefasProjeto from '../pages/TarefasProjeto';
 import Tarefas from '../pages/Tarefas';
-import Dashboard from '../pages/Dashboard';
+import Configuracoes from '../pages/Configuracoes';
 
 
 const Tab = createBottomTabNavigator();
@@ -14,7 +14,8 @@ const Stack = createStackNavigator ();
 
 const StackProjetos = () => {
   return(
-      <Stack.Navigator 
+      <Stack.Navigator
+      screenOptions={{headerShown: false}} 
       initialRouteName="Projetos">
           <Stack.Screen  name="Projetos" component={Projetos}/>
           <Stack.Screen  name="TarefasProjeto" component={TarefasProjeto}/>
@@ -25,7 +26,7 @@ const StackProjetos = () => {
 const AppRoutes = () => {
   return (
     <Tab.Navigator
-      initialRouteName="StackProjetos"
+      initialRouteName="Projetos"
       tabBarOptions={
         {
           activeTintColor: '#017374',
@@ -33,7 +34,7 @@ const AppRoutes = () => {
         }
       }>
       <Tab.Screen
-      name="StackProjetos"
+      name="Projetos"
       component={StackProjetos}
       options={
         {
@@ -59,13 +60,13 @@ const AppRoutes = () => {
           }
         } />
       <Tab.Screen
-        name="Dashboard"
-        component={Dashboard}
+        name="Conficurações"
+        component={Configuracoes}
         options={
           {
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons
-                name="view-dashboard"
+                name="settings"
                 color={color}
                 size={32} />
             )

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Text, View } from 'react-native';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -12,8 +11,6 @@ import {
   Tasks,
   TaskText
 } from './styles'
-
-import api from '../../services/api';
 
 import { UsuarioContext } from '../../contexts/user';
 
@@ -37,7 +34,9 @@ const Tarefas = () => {
     })
     setTasks(data)
   }
+
   useEffect(() => {
+    // firebase.firestore().collection('tarefas').where("idUsuario","==",usuario.user.id).onSnapshot(listenTasks);
     firebase.firestore().collection('tarefas').onSnapshot(listenTasks);
   }, [])
 
@@ -49,22 +48,22 @@ const Tarefas = () => {
     }
 
     try {
-      await api.put(`tarefas/${task.id}`, params);
-      loadTasks();
-    } catch (err) {
+      await firebase.firestore().collection('tarefas').doc(task.id).set(params,{ merge:true })
 
+
+    } catch (err) {
+      
     }
   }
 
   const handleRemoveTask = async ({ id }) => {
 
     try {
-      await api.delete(`tarefas/${id}`);
-      loadTasks();
+      await firebase.firestore().collection('tarefas').doc(id).delete();
+
     } catch (err) {
       console.warn("erro ao deletar tarefa")
     }
-    // console.warn(`delete ${id}`)
   }
 
 

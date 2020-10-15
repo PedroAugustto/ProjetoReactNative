@@ -18,8 +18,6 @@ import {
     ProjectButtonText
   } from './styles'
 
-import api from '../../services/api';
-
 import { UsuarioContext } from '../../contexts/user';
 
 import firebase from 'firebase';
@@ -63,22 +61,20 @@ const Projetos = () => {
       try{
         await firebase.firestore().collection('projetos').add(params)
         setNewProject("");
-        loadProjects();
       } catch (err) {
         console.warn("erro ao salvar o projeto")
       }
     }
     
-      const handleRemoveProject = async ({ id }) => {
+    const handleRemoveProject = async ({ id }) => {
 
-        try {
-          await api.delete(`projetos/${id}`);
-          loadProjects();
-        } catch (err) {
-          console.warn("erro ao deletar tarefa")
-        }
+      try {
+        await firebase.firestore().collection('projetos').doc(id).delete();
+  
+      } catch (err) {
+        console.warn("erro ao deletar projeto")
       }
-
+    }
     return(
     <Container>
         <Title>Projetos</Title>

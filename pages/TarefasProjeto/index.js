@@ -1,7 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Picker } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+import { useIsFocused } from '@react-navigation/native';
+
+import ProgressCircle from 'react-native-progress-circle';
+
+import { Text } from 'react-native';
 
 import {
   Container,
@@ -18,10 +25,9 @@ import {
   Tasks,
   TaskText,
   TaskTextNome,
-  SetaVoltar
+  SetaVoltar,
+  Progress
 } from './styles'
-
-import api from '../../services/api';
 
 import { UsuarioContext } from '../../contexts/user';
 
@@ -30,6 +36,8 @@ import firebase from 'firebase';
 import 'firebase/firestore'
 
 const TarefasProjeto = (props) => {
+
+  const navigation = useNavigation();
 
   console.log(props)
   const usuario = useContext(UsuarioContext);
@@ -71,7 +79,7 @@ const TarefasProjeto = (props) => {
   }
   
   useEffect(() => {
-    firebase.firestore().collection('tarefas').onSnapshot(listenTasks);    
+    firebase.firestore().collection('tarefas').where("idProjeto", "==", props.route.params.ProjetoId).onSnapshot(listenTasks);    
   }, [])
 
   useEffect(() => {
@@ -100,8 +108,6 @@ const TarefasProjeto = (props) => {
     }
 
     try {
-      // await api.post("tarefas", params);
-
       await firebase.firestore().collection('tarefas').add(params)
 
       setNewTask("");
@@ -119,22 +125,58 @@ const TarefasProjeto = (props) => {
     }
 
     try {
-      await api.put(`tarefas/${task.id}`, params);
-      loadTasks();
-    } catch (err) {
+      await firebase.firestore().collection('tarefas').doc(task.id).set(params,{ merge:true })
 
+
+    } catch (err) {
+      
     }
   }
 
   const handleRemoveTask = async ({ id }) => {
 
     try {
-      await api.delete(`tarefas/${id}`);
-      loadTasks();
+      await firebase.firestore().collection('tarefas').doc(id).delete();
+
     } catch (err) {
       console.warn("erro ao deletar tarefa")
     }
   }
+
+  //ProgressoDoProjeto
+
+  const [percentual, setPercentual] = useState(0);
+  const focoPagina = useIsFocused();
+
+  const percentualTarefasRealizadas = async () => {
+    const resultado = await api.get("tarefas");
+    const tarefas = resultado.data
+    const tarefas_realizadas = tarefas.filter(tarefa => tarefa.concluido)
+
+    const calculo_percentual = (tarefas_realizadas.length / tarefas.length) * 100
+
+    setPercentual(calculo_percentual)
+  }
+  
+
+  const listenDashboardTasks = (snap) =>{
+    const tarefas = snap.docs
+    const tarefas_realizadas = tarefas.filter((tarefa) => {
+      return tarefa.data().concluido})
+
+    const calculo_percentual = (tarefas_realizadas.length / tarefas.length) * 100
+
+    setPercentual(calculo_percentual)
+  }
+
+  useEffect(() => {
+    if (focoPagina) {
+      firebase.firestore().collection('tarefas').where("idProjeto", "==", props.route.params.ProjetoId).onSnapshot(listenDashboardTasks);    
+    }
+
+  }, [focoPagina])
+
+
 
   return (
 
@@ -146,6 +188,7 @@ const TarefasProjeto = (props) => {
                 name="arrow-left"
                 color="#D0FEFE"
                 size={40}
+                onPress = {() => navigation.navigate('Projetos')}
               />
             </SetaVoltar>
             <Title>Criar Tarefa</Title>
@@ -199,7 +242,20 @@ const TarefasProjeto = (props) => {
 
         )
         )}
-      </Tasks>
+        <Progress>
+          <Title>Progresso do Projeto</Title>
+          <ProgressCircle
+            percent={percentual}
+            radius={100}
+            borderWidth={30}
+            color="#017374"
+            shadowColor="#999"
+            bgColor="#fff"
+            >
+            <Text style={{ fontSize: 25 }}>{`${percentual.toFixed(2)}%`}</Text>
+          </ProgressCircle>
+          </Progress>
+        </Tasks>
     </Container>
 
 

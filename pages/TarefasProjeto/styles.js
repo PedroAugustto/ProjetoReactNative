@@ -89,4 +89,7 @@ export const Head = styled.View`
   align-items: center;
   margin: 10px;
 `;
-//Salvando a Pátria (de novo)
+
+export const Progress = styled.View`
+  align-items: center;
+`;
