@@ -24,7 +24,6 @@ import {
   FormEnviar,
   Tasks,
   TaskText,
-  TaskTextNome,
   SetaVoltar,
   Progress
 } from './styles'
@@ -219,7 +218,6 @@ const TarefasProjeto = (props) => {
           <TaskContainer key={task.id} finalizado={task.concluido}>
             <Task >
               <TaskText>{task.descricao}</TaskText>
-              <TaskTextNome>nome do usuario</TaskTextNome>
             </Task>
             <TaskActions>
 

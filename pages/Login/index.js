@@ -25,7 +25,7 @@ import { UsuarioContext } from '../../contexts/user';
 
 const Login = () => {
 
-  const { signIn, signUp } = useContext(UsuarioContext);
+  const { signIn } = useContext(UsuarioContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,16 +40,15 @@ const Login = () => {
   const handleEmailCadastro = texto => setEmailCadastro(texto)
   const handleSenhaCadastro = texto => setSenhaCadastro(texto)
 
-  async function handleSubmitRegistro() {
-    setCarregando(true)
-
-    try {
-      await signUp(email, password)
-    } catch (err) {
-      console.warn('erro ao realizar cadastro')
-    } finally {
-      setCarregando(false)
+  const handleSubmitRegistro = async () => {
+    const novoUsuario = {
+      nome: nomeCadastro,
+      email: emailCadastro,
+      password: senhaCadastro
     }
+    let user =await api.post ("/usuarios", novoUsuario)
+    console.log(user)
+    setOpen(false)
   }
 
   async function handleSubmit() {
@@ -62,6 +61,11 @@ const Login = () => {
     } finally {
       setCarregando(false)
     }
+
+    // Auth
+
+    // console.warn(email, password)
+    // setCarregando(false)
   }
 
   return (
@@ -87,14 +91,6 @@ const Login = () => {
             <ActivityIndicator color="#333" />
             :
             <ButtonText>Acessar</ButtonText>
-          }
-        </Button>
-
-        <Button onPress={handleSubmitRegistro} disabled={!password || !email}>
-          {carregando ?
-            <ActivityIndicator color="#333" />
-            :
-            <ButtonText>Cadastrar</ButtonText>
           }
         </Button>
 
