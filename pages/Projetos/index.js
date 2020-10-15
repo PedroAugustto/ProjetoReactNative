@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import {View, Text} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -23,6 +22,10 @@ import api from '../../services/api';
 
 import { UsuarioContext } from '../../contexts/user';
 
+import firebase from 'firebase';
+
+import 'firebase/firestore'
+
 const Projetos = () => {
 
     
@@ -30,28 +33,22 @@ const Projetos = () => {
 
     const usuario = useContext(UsuarioContext);
 
-    const [tasks, setTasks] = useState([]);
-
-    const [test,setTest] = useState([]);
     const [projects, setProjects] = useState([]);
     const [newProject, setNewProject] = useState("");
 
-    const [tela,setTela] = useState(0);
-
-    const loadProjects = async () => {
-
-      try {
-        const response = await api.get("projetos");
-        //console.warn(response.data);
-        setProjects(response.data)
-      } catch (err) {
-          console.warn("Falha ao recuperar o Projeto.")
+    const listenProjects = (snap) =>{
+      const data = snap.docs.map((doc)=>{
+        return {
+          id:doc.id,
+          ...doc.data()
         }
+      })
+      setProjects(data)
     }
 
-    const handleDirecionarParaTarefasProjeto = () => {
-      navigation.reset({routes:[{name: 'TarefasProjeto'}]});
-  }
+    useEffect(() => {
+      firebase.firestore().collection('projetos').onSnapshot(listenProjects);
+    }, [])
     
     const handleAddProjects = async () => {
 
@@ -64,7 +61,7 @@ const Projetos = () => {
       }
 
       try{
-        await api.post("projetos", params);
+        await firebase.firestore().collection('projetos').add(params)
         setNewProject("");
         loadProjects();
       } catch (err) {
@@ -72,21 +69,6 @@ const Projetos = () => {
       }
     }
     
-      // const handleProjects = async (project) => {
-
-      //   const params = {
-      //     ...project,
-      //     concluido: !project.concluido
-      //   }
-
-      //   try{
-      //     await api.put(`projetos/${project.id}`, params);
-      //     loadProjects();
-      //   } catch (err) {
-
-      //   }
-      // }
-
       const handleRemoveProject = async ({ id }) => {
 
         try {
@@ -97,28 +79,6 @@ const Projetos = () => {
         }
       }
 
-      
-      
-      //Tasks
-
-      const loadTasks = async () => {
-
-        try {
-          const response = await api.get(`tarefas?idUsuario=${usuario.user.id}`);
-          setTasks(response.data)
-        } catch (err) {
-          console.warn("Falha ao recuperar as tarefas.")
-        }
-        
-      }
-    useEffect(() => {
-      loadProjects()
-      loadTasks();
-    }, [])
-    useEffect(() => {
-      console.warn(newProject)
-    }, [newProject])
-    
     return(
     <Container>
         <Title>Projetos</Title>

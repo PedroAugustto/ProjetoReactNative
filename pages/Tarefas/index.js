@@ -17,26 +17,29 @@ import api from '../../services/api';
 
 import { UsuarioContext } from '../../contexts/user';
 
+import firebase from 'firebase';
+
+import 'firebase/firestore'
+
 const Tarefas = () => {
 
   const usuario = useContext(UsuarioContext);
-  console.warn(usuario);
 
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
 
-  //Todas as tarefas de todos os usuarios estão sendo exibidas
-  const loadTasks = async () => {
-
-    try {
-      const response = await api.get(`tarefas?idUsuario=${usuario.user.id}`);
-      // console.warn(response.data);
-      setTasks(response.data)
-    } catch (err) {
-      console.warn("Falha ao recuperar as tarefas.")
-    }
-
+  const listenTasks = (snap) =>{
+    const data = snap.docs.map((doc)=>{
+      return {
+        id:doc.id,
+        ...doc.data()
+      }
+    })
+    setTasks(data)
   }
+  useEffect(() => {
+    firebase.firestore().collection('tarefas').onSnapshot(listenTasks);
+  }, [])
 
   const handleTasks = async (task) => {
 
@@ -63,18 +66,6 @@ const Tarefas = () => {
     }
     // console.warn(`delete ${id}`)
   }
-
-  //Apenas será executado uma única vez!
-  useEffect(() => {
-    loadTasks();
-  }, [])
-
-  //Aerá executado toda vez que NewTask sofrer alterações
-  //apenas um exemplo, sem relação com a solução atual
-  useEffect(() => {
-    // console.warn(newTask)
-  }, [newTask])
-
 
 
   return (

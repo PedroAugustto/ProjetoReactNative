@@ -25,19 +25,21 @@ import api from '../../services/api';
 
 import { UsuarioContext } from '../../contexts/user';
 
+import firebase from 'firebase';
+
+import 'firebase/firestore'
+
 const TarefasProjeto = (props) => {
 
   console.log(props)
   const usuario = useContext(UsuarioContext);
-
+  
   // const { ProjetoId , ProjetoNome} = route.params;
   const [tasks, setTasks] = useState([]);
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState("");
   const [newTask, setNewTask] = useState("");
-  const [open, setOpen] = useState(false);
-  const [newProject, setNewProject] = useState("");
-
+  
   const loadUsers = async () => {
     try {
       const response = await api.get("usuarios")
@@ -45,22 +47,41 @@ const TarefasProjeto = (props) => {
     } catch (err) {
       console.warn("Falha ao recuperar usuários.")
     }
-
+    
+  }
+  
+  const listenUsers = (snap) =>{
+    const data = snap.docs.map((doc)=>{
+      return {
+        id:doc.id,
+        ...doc.data()
+      }
+    })
+    setUsers(data)
   }
 
-  const loadTasks = async () => {
-
-    try {
-      const response = await api.get(`tarefas?idProjeto=${props.route.params.ProjetoId}`);
-      setTasks(response.data)
-    } catch (err) {
-      console.warn("Falha ao recuperar as tarefas.")
-    }
-
+  const listenTasks = (snap) =>{
+    const data = snap.docs.map((doc)=>{
+      return {
+        id:doc.id,
+        ...doc.data()
+      }
+    })
+    setTasks(data)
   }
+  
+  useEffect(() => {
+    firebase.firestore().collection('tarefas').onSnapshot(listenTasks);    
+  }, [])
+
+  useEffect(() => {
+    firebase.firestore().collection('usuarios').onSnapshot(listenUsers);
+  }, [])
+  
+
 
   const handleAddTasks = async () => {
-
+    
     if (newTask == "") {
       console.warn("você deve preencher a tarefa")
       return
@@ -79,10 +100,11 @@ const TarefasProjeto = (props) => {
     }
 
     try {
-      await api.post("tarefas", params);
+      // await api.post("tarefas", params);
+
+      await firebase.firestore().collection('tarefas').add(params)
+
       setNewTask("");
-      setOpen(false)
-      loadTasks();
     } catch (err) {
       console.warn("erro ao salvar a tarefa")
     }
@@ -113,12 +135,6 @@ const TarefasProjeto = (props) => {
       console.warn("erro ao deletar tarefa")
     }
   }
-
-  //Apenas será executado uma única vez!
-  useEffect(() => {
-    loadTasks()
-    loadUsers();
-  }, [])
 
   return (
 

@@ -39,29 +39,19 @@
     {
       "descricao": "Projeto B",
       "id": 2
+    },
+    {
+      "descricao": "Projeto C",
+      "id": 3
     }
   ],
   "tarefas": [
     {
-      "descricao": "Projeto A",
-      "idUsuario": 1,
-      "idProjeto": 1,
-      "concluido": false,
-      "id": 1
-    },
-    {
       "descricao": "Tarefa Anderson",
       "idUsuario": 2,
       "idProjeto": 1,
-      "concluido": false,
-      "id": 2
-    },
-    {
-      "descricao": "Projeto B",
-      "idUsuario": 1,
-      "idProjeto": 2,
-      "concluido": false,
-      "id": 3
+      "id": 2,
+      "concluido": true
     },
     {
       "descricao": "Tarefa Carol",
